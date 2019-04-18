@@ -1,6 +1,7 @@
 # Returns a new array to that contains elements in the intersection of the two input arrays
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: O(n + m) where n and m are the lengths of the two array inputs
+# Space complexity: O(n) or O(m), where n and m are the lengths of the two array inputs,
+#                   depending in which array is smaller
 def intersection(array1, array2)
   if array1 == nil || array2 == nil || array1.length == 0 || array2.length == 0
     return []
@@ -12,21 +13,16 @@ def intersection(array1, array2)
     smaller = array2
   end
 
-  hash_table = { }
+  hash_table = {}
   smaller.each do |num|
     hash_table[num] = 1
   end
 
-   combined = []
-   larger.each do |num1|
-    if hash_table.include? num1
-      combined << num1
+  combined = []
+  larger.each do |num|
+    if hash_table.include? num
+      combined << num
     end
   end
   return combined
 end
-
-array3 = [1, 2, 3]
-array4 = [3, 4, 5, 6]
-
-# puts "hi #{intersection(array3, array4)}"
